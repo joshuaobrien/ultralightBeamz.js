@@ -3,6 +3,8 @@ var ultralightBeamz = [];
 function setup() {
   createCanvas(800, 800);
 
+  pablo = loadImage("assets/pablo.jpg");
+
   for (var i = 0; i < 200; i++) {
     ultralightBeamz[i] = new Beam();
   }
@@ -10,6 +12,8 @@ function setup() {
 
 function draw() {
   background(0, 0, 0);
+
+  image(pablo, width/2 - 80, width/2 - 60, 150, 150);
 
 
   for (var i = 0; i < ultralightBeamz.length; i++) {
@@ -25,7 +29,7 @@ function Beam() {
   this.z = random(width);
 
   this.show = function() {
-    fill(165, 42, 42);
+    fill(255, 255, 255);
 
     var dx = map(this.x / this.z, 0, 1, 0, width) + width/2;
     var dy = map(this.y / this.z, 0, 1, 0, width) + width/2;
@@ -34,6 +38,6 @@ function Beam() {
   }
 
   this.update = function() {
-    this.z = this.z < 1 ? width : this.z - 1;
+    this.z = this.z < 1 ? width : this.z - 10;
   }
 }
