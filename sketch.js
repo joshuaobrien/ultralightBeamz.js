@@ -23,12 +23,16 @@ function draw() {
 
 function Beam() {
    
-  var crumbs = 15;
+   // Settings
+  var crumbs = 10;
   var increment = 20;
-  var endColour = 165;
+  var endColour = 90;
+  var thicc = 20;
   
   var centreX = width/2;
   var centreY = height/2;
+  var quaterThicc = thicc * 0.75;
+  var colourFinal = 255 - endColour;
   
   a = random(0, 2*Math.PI);
   this.x = 50 * cos(a);
@@ -45,14 +49,15 @@ function Beam() {
     for (var i = crumbs; i > 0; i--) {
         var tx = map(this.x / (this.z + i*4), 0, 1, 0, width) + centreX;
         var ty = map(this.y / (this.z + i*4), 0, 1, 0, height) + centreX;
-        var colour = 255 - (i * (endColour/crumbs));
+        var colour = 255 - (i * (colourFinal/crumbs));
+        var size = quaterThicc - (i * (quaterThicc/crumbs));
         fill(colour);
         stroke(colour);
-        ellipse(tx, ty, crumbs-i, crumbs-i);
+        ellipse(tx, ty, size, size);
     }
    
     fill(255);
-    ellipse(dx, dy, 20, 20);
+    ellipse(dx, dy, thicc, thicc);
     
   }
 
