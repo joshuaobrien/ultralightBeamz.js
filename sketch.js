@@ -1,10 +1,18 @@
 var ultralightBeamz = [];
 var ultralightBeamzOuter = [];
+var starFieldX = [];
+var starFieldY = [];
+var numberStars = 200;
 
 function setup() {
   createCanvas(800, 800);
 
   pablo = loadImage("assets/pablo.jpg");
+  
+  for (var i = 0; i < numberStars; i++) {
+      starFieldX[i] = random(0, width);
+      starFieldY[i] = random(0, height);
+  }
 
   for (var i = 0; i < 200; i++) {
     ultralightBeamz[i] = new Beam(50, 255);
@@ -13,8 +21,13 @@ function setup() {
 }
 
 function draw() {
-  background(28, 28, 28);
-
+  background(18, 18, 18);
+  
+  for (var i = 0; i < numberStars; i++) {
+      stroke(random(90,255));
+      ellipse(starFieldX[i], starFieldY[i], 1, 1);
+  }
+  
   for (var i = 0; i < ultralightBeamz.length; i++) {
     ultralightBeamz[i].show();
     ultralightBeamz[i].update();
