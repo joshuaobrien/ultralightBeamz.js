@@ -15,8 +15,6 @@ function setup() {
 function draw() {
   background(28, 28, 28);
 
-  image(pablo, width/2 - 80, width/2 - 60, 150, 150);
-
   for (var i = 0; i < ultralightBeamz.length; i++) {
     ultralightBeamz[i].show();
     ultralightBeamz[i].update();
