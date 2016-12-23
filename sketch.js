@@ -24,7 +24,7 @@ function draw() {
 function Beam() {
    
    // Settings
-  var crumbs = 10;
+  var crumbs = 15;
   var increment = 20;
   var endColour = 90;
   var thicc = 20;
@@ -33,6 +33,7 @@ function Beam() {
   var centreY = height/2;
   var quaterThicc = thicc * 0.75;
   var colourFinal = 255 - endColour;
+  var spacingScale = 60/crumbs;
   
   a = random(0, 2*Math.PI);
   this.x = 50 * cos(a);
@@ -41,14 +42,13 @@ function Beam() {
   this.out = 0;
 
   this.show = function() {
-    // fill(255, 255, 255);
 
     var dx = map(this.x / this.z, 0, 1, 0, width) + centreX;
     var dy = map(this.y / this.z, 0, 1, 0, height) + centreY;
     
     for (var i = crumbs; i > 0; i--) {
-        var tx = map(this.x / (this.z + i*4), 0, 1, 0, width) + centreX;
-        var ty = map(this.y / (this.z + i*4), 0, 1, 0, height) + centreX;
+        var tx = map(this.x / (this.z + i*spacingScale), 0, 1, 0, width) + centreX;
+        var ty = map(this.y / (this.z + i*spacingScale), 0, 1, 0, height) + centreX;
         var colour = 255 - (i * (colourFinal/crumbs));
         var size = quaterThicc - (i * (quaterThicc/crumbs));
         fill(colour);
